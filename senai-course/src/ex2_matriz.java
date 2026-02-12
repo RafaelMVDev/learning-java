@@ -43,7 +43,7 @@ public class ex2_matriz {
             for (int j = 0; j < n; j ++){
 
                 c[i][j] = a[i][j] + b[i][j];
-                System.out.printf("%d  ",c[i][j]);
+                System.out.printf("Elemento [%d,%d]: %d  ",i,j,c[i][j]);
             }
             System.out.println(); // Nova linha por linha da matriz
         }
