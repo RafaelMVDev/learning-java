@@ -1,3 +1,5 @@
+package february_eleventh;
+
 import java.util.Scanner;
 
 public class ex3_matriz {
