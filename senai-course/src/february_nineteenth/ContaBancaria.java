@@ -28,7 +28,7 @@ public class ContaBancaria {
             this.saldo -= valor;
             System.out.println("Saque realizado com sucesso. Novo saldo: " + this.saldo);
         } else {
-            System.out.println("Saldo insuficiente ou valor de saqui inválido")
+            System.out.println("Saldo insuficiente ou valor de saqui inválido");
         }
     }
     // *** ENCAPSULAMENTO AQUI ***

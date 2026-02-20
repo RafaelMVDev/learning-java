@@ -27,6 +27,17 @@ public class Carro {
             System.out.println("O carro já es´ta ligado.");
         }
     }
+
+    // Método público para desligar o carro, controlando a rera de negócio
+
+    public void desligar(){
+        if (this.ligado){
+            this.ligado = false;
+            System.out.println("Carro desligado.");
+        } else {
+            System.out.println("O carro já está desligado.");
+        }
+    }
     // A velocidade só pode ser alterada se o carro estiver ligado
 
     public void acelerar(int aumento){
@@ -37,6 +48,15 @@ public class Carro {
             System.out.println("Não é possível acelerar. O carro está desligado ou o valor é inválido.");
 
     }}
+    public void desacelerar(int reducao) {
+        if (ligado && reducao > 0) {
+            this.velocidade -= reducao;
+            if (this.velocidade < 0) {
+                this.velocidade = 0; // Não permite velocidade negativa
+            }
+            System.out.println("Desacelerando...Velocidade atual: " + this.velocidade + " km/h");
+        }
+    }
 
     public void frear(int reducao) {
         if (ligado && reducao > 0) {

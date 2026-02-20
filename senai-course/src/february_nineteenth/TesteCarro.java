@@ -15,8 +15,10 @@ public class TesteCarro {
         System.out.println("\n Agora vamos ligar o carro...");
         meuFusca.ligar();
 
-        //4. Tentamos ligar de novo
+        //4. Ligando e desligando o carro
         meuFusca.ligar(); // A lógica interna vai avisar que já está ligado
+        meuFusca.desligar(); // desliga o carro
+        meuFusca.ligar();
 
         //5 Agora aceleramos
 
@@ -26,8 +28,8 @@ public class TesteCarro {
 
         System.out.println("Velocidade atual do Fusca: " + meuFusca.getVelocidade() + " km/h");
 
-        // 6. Vamos frear
-        System.out.println("\n Freando um pouco...");
+        // 6. Vamos desacelerar
+        System.out.println("\n Desacelerando um pouco...");
         meuFusca.frear(10); //Reduz para 25. A marcha volta para 2.
 
         System.out.println("Velocidade final do Fusca: " + meuFusca.getVelocidade() + " km/h");
