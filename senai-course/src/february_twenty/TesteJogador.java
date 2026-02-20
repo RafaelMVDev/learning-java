@@ -25,11 +25,13 @@ public class TesteJogador {
 
         System.out.println("\n Recbendo um ataque devastador...");
         heroi.receberDano(150); // Lógica impede vida de ir negativo -> vai pra 0
-
         // Tentando manipular a vida diretamente
         // Causará erro de compilação - vida é private e nn pode ser manipulada diretamente
         //heroi.vida = 9999;
 
+        // Revivendo
+
+        heroi.ressuscitar();
 
 
     }

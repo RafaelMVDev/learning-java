@@ -47,6 +47,15 @@ public class Jogador {
         }
     }
 
+    // 'Restart', caso  o jogador esteja vivo
+    public void ressuscitar(){
+        if (this.vida == 0 ){
+            System.out.println("Ressuscitando!");
+            this.vida = VIDA_MAXIMA;
+        }
+    }
+
+
     // getters
     public int getPontuacao() { return this.pontuacao;}
     public int getVida(){return this.vida;};
