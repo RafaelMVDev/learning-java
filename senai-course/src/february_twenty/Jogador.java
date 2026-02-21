@@ -8,8 +8,11 @@ public class Jogador {
     // 'final' significa que o valor não pode ser alterado após a inicialização
     // 'static' significa que este valor pertence à classe, não a um objeto individual
 
-    private static final int VIDA_MAXIMA = 100;
+    private static final int VIDA_MAXIMA = 100; // referência
+    private static int numero_jogadores = 0; // contador (não depende do estado de um objeto )
+
     public Jogador(String nome){
+        numero_jogadores++; // Incrementa na criação do objeto para contagem
         this.nome = nome;
         this.pontuacao = 0;
         this.vida = VIDA_MAXIMA;
@@ -47,7 +50,7 @@ public class Jogador {
         }
     }
 
-    // 'Restart', caso  o jogador esteja vivo
+    // 'Restart' caso jogador queira continuar a jogar
     public void ressuscitar(){
         if (this.vida == 0 ){
             System.out.println("Ressuscitando!");
