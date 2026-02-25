@@ -1,5 +1,5 @@
 
-class condicaoAnd {
+class conditionAnd {
     public static void main(String[] args)
     {
         // inicializando variavel
