@@ -3,8 +3,8 @@ package february_twenty_fourth;
 public class ArenaDeBatalha {
     public static void main(String[] args) {
         // 1. Criação dos Personagens
-        Heroi aragorn = new Heroi("Aragorn", 100,15);
-        Monstro orc = new Monstro("Orc Grunt", 70,10,"Golpe de Clava");
+        Heroi aragorn = new Heroi("Aragorn", 100,15,"Espada");
+        Monstro orc = new Monstro("Orc Grunt", 70,10,"Golpe de Clava", "Clava");
 
         System.out.println("--- A BATALHA COMEÇA ! ----");
         aragorn.exibirStatus();
@@ -44,7 +44,7 @@ public class ArenaDeBatalha {
         if (aragorn.estaVivo()) {
             System.out.println(aragorn.nome + " é o vencedor!");
         } else {
-            System.out.println(orc.name + " é o vencedor!");
+            System.out.println(orc.nome + " é o vencedor!");
         }
 
         aragorn.exibirStatus();
