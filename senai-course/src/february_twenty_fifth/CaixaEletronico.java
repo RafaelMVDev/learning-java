@@ -12,21 +12,24 @@ public class CaixaEletronico {
 
         Cliente cliente1 = new Cliente("Clark Kent", "111.222.333-44");
         Conta conta1 = new ContaCorrente(cliente1); // Clark tem uma Conta Corrente
+        Conta conta_pix1 = new ContaPix(cliente1);
         conta1.depositar(1500.0);
 
         Cliente cliente2  = new Cliente("Bruce Wayne", "888.999.000-11");
         Conta conta2 = new ContaPoupanca(cliente2); //Bruce tem uma Conta Poupança
+        Conta conta_pix2 = new ContaPix(cliente1);
         conta2.depositar(100000.0);
+
 
         // Colocamos as contas em um array do tipo da superclasse ( Conta )>
         // Isso é Polimorfismo: o array pode guardar qualquer objeto que SEJA UMA Conta.
 
-        Conta[] contasDoBanco = {conta1, conta2};
-        Conta contaAtiva = contasDoBanco[0];
+        Conta[] contasDoBanco = {conta1, conta_pix1,conta2,conta_pix2};
+        Conta contaAtiva = contasDoBanco[1];
 
         int opcao = 0;
 
-        while(opção != 8){
+        while(opcao != 8){
             System.out.println("\n--- CAIXA ELETRÔNICO ZZ BANK ---");
             System.out.println("Bem-vindo(a), " + contaAtiva.getNomeTitular() + " | Conta: " + contaAtiva.getClass().getSimpleName());
             System.out.println("1- Consultar Saldo");
@@ -45,7 +48,12 @@ public class CaixaEletronico {
             if (contaAtiva instanceof ContaPoupanca){
                 System.out.println("7- Fazer Render Juros");
             }
-            System.out.println("8 - Sair");
+
+            if (contaAtiva instanceof ContaPix){
+                System.out.println("8 - Fazer Pix");
+                System.out.println("9 - Adicionar Chave Pix");
+            }
+            System.out.println("10 - Sair");
             System.out.print("Escolha uma opção: ");
 
             try {
@@ -58,9 +66,9 @@ public class CaixaEletronico {
                     System.out.print("Digite o valor para depositar: ");
                     contaAtiva.depositar(scanner.nextDouble());
                     break;
-                case3:
-                System.out.print("Digite o valor para sacar: ");
-                contaAtiva.sacar(scanner.nextDouble());
+                case 3:
+                    System.out.print("Digite o valor para sacar: ");
+                    contaAtiva.sacar(scanner.nextDouble());
                 break;
                 case 4:
                     System.out.println("Digite o número da conta destino: ");
@@ -85,9 +93,12 @@ public class CaixaEletronico {
                     int numContaLogin = scanner.nextInt();
                     boolean encontrada = false;
                     for (Conta c : contasDoBanco) {
-                        contaAtiva = c;
-                        encontrada = true;
-                        break;
+                        if (c.getNumero() == numContaLogin){
+                            contaAtiva = c;
+                            encontrada = true;
+                            break;
+                        }
+
                     }
                     if (encontrada) System.out.println("Login efetuado com sucesso!");
                     else System.out.println("Conta não encontrada.");
@@ -104,11 +115,40 @@ public class CaixaEletronico {
                 case 7:
                     if (contaAtiva instanceof ContaPoupanca) {
                         //Fazendo o "cast" para ContaPoupanca
+                        System.out.println("6 - Cobrar Taxa de Manutenção");
                         ((ContaPoupanca) contaAtiva).renderJuros();
                     } else {
                         System.out.println("Opção válida apenas para Contas Poupança.");
                     }
+
                 case 8:
+                    scanner.nextLine();
+                    System.out.print("\nDigite a chave pix do destinatário: ");
+                    String chave_pix = scanner.nextLine();
+                    for (Conta c:contasDoBanco){
+                        if (c instanceof ContaPix) {
+                            ContaPix contaPix = (ContaPix) c;
+                            if (contaPix.chaveExiste(chave_pix)){
+                                System.out.println("Digite o valor para transferir: ");
+                                c.depositar(scanner.nextDouble());
+
+                                System.out.println("Transferência realizada com sucesso! ");
+                            } else{
+                                System.out.println("Chave não encontrada!: ");
+                            }
+                        }
+                    }
+                case 9:
+                    scanner.nextLine();
+                    System.out.print("\n Digite a chave a ser adicionada: ");
+                    if (contaAtiva instanceof ContaPix) {
+                        ContaPix contaPix = (ContaPix) contaAtiva;
+                        contaPix.adicionarChave(scanner.nextLine());
+                        System.out.println("Listando chaves == ");
+                        contaPix.listarChaves();
+                    }
+
+                case 10:
                     System.out.println("\n Obrigado por usar o ZZ  Bank. Volte sempre!");
                     break;
                 default:
