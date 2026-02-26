@@ -1,8 +1,10 @@
 package february_twenty_fifth;
 
+import java.util.ArrayList;
+
 public class Conta {
     // Protected permite que as classes filhas acessem diretamente estes atributos.
-
+    protected ArrayList<String> chaves_pix = new ArrayList<>();
     protected int numero;
     protected Cliente titular;
     protected double saldo;
@@ -70,6 +72,28 @@ public class Conta {
         System.out.println("Número.: " + this.getNumero());
         System.out.println("Saldo...: R$ " +String.format("%.2f", this.getSaldo()));
         System.out.println("-------------------------");
+    }
+
+    // Seção pix
+    public void adicionarChave(String chave){
+        this.chaves_pix.add(chave);
+    }
+
+    public boolean chaveExiste(String chave_goal){
+
+        for (String c : this.chaves_pix ){
+            if (c.equals(chave_goal)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void listarChaves(){
+        System.out.println("====== Chaves ======");
+        for (String chave : this.chaves_pix){
+            System.out.println(chave);
+        }
     }
 }
 
