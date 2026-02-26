@@ -4,9 +4,11 @@ import java.util.ArrayList;
 public class ContaPix extends Conta{
     // Chaves pix
     private ArrayList<String> chaves_pix = new ArrayList<>();
+    private ContaCorrente conta_corrente;
+    public ContaPix(Cliente titular, ContaCorrente conta_corrente){
 
-    public ContaPix(Cliente titular){
         super(titular);
+        this.conta_corrente = conta_corrente;
     }
 
     public void adicionarChave(String chave){
@@ -41,6 +43,6 @@ public class ContaPix extends Conta{
 
 
     public void fazerPix(Conta c, double valor){
-        c.depositar(valor);
+        this.conta_corrente.depositar(valor);
     }
 }

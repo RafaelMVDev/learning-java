@@ -12,12 +12,12 @@ public class CaixaEletronico {
 
         Cliente cliente1 = new Cliente("Clark Kent", "111.222.333-44");
         Conta conta1 = new ContaCorrente(cliente1); // Clark tem uma Conta Corrente
-        Conta conta_pix1 = new ContaPix(cliente1);
+        Conta conta_pix1 = new ContaPix(cliente1, (ContaCorrente) conta1);
         conta1.depositar(1500.0);
 
         Cliente cliente2  = new Cliente("Bruce Wayne", "888.999.000-11");
         Conta conta2 = new ContaPoupanca(cliente2); //Bruce tem uma Conta Poupança
-        Conta conta_pix2 = new ContaPix(cliente1);
+        Conta conta_pix2 = new ContaPix(cliente2,(ContaCorrente) conta2);
         conta2.depositar(100000.0);
 
 
