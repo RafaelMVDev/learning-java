@@ -95,5 +95,11 @@ public class Conta {
             System.out.println(chave);
         }
     }
+
+    public void fazerPix(Conta c, double valor){
+
+        this.transferir(c,valor);
+
+    }
 }
 
