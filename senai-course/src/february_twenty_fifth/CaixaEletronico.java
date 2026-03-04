@@ -63,8 +63,13 @@ public class CaixaEletronico {
                     contaAtiva.exibirDados();
                     break;
                 case 2:
-                    System.out.print("Digite o valor para depositar: ");
-                    contaAtiva.depositar(scanner.nextDouble());
+                    if (contaAtiva instanceof ContaSalario) {
+                        System.out.print("Método inválido para conta salário: ");
+                    }else{
+                        System.out.print("Digite o valor para depositar: ");
+                        contaAtiva.depositar(scanner.nextDouble());
+                    }
+
                     break;
                 case 3:
                     System.out.print("Digite o valor para sacar: ");
@@ -182,4 +187,9 @@ public class CaixaEletronico {
         scanner.close();
     }
 }
+
+//Downcasting (Manual/Explícito): Converter uma superclasse para uma subclasse. É necessário quando você tem uma referência da superclasse mas precisa acessar métodos específicos da subclasse.
+//java
+Animal a = new Cachorro();
+Cachorro c = (Cachorro) a; // Explícito: Necessário para forçar o tipo
 
