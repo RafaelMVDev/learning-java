@@ -23,7 +23,7 @@ public class CentralDeControle{
         SmartTV tvDaSala = new SmartTV("TV da Sala", "Matrix");
         Celular meuCelular = new Celular("iPhone 15", "Stairway to Heaven", "Led Zeppelin");
         RadioAutomotivo radioDoCarro = new RadioAutomotivo("Rádio do Carro", 98.9);
-
+        VideoGame VideoGame = new VideoGame("Xbox One","Red Dead Redemption 2");
         //USANDO O POLIMORFISMO:
         // O mesmo metodo 'apertarPlay' é chamado com objetos de tipos diferentes,
         // e cada um se comporta de sua própria maneira.
@@ -31,11 +31,12 @@ public class CentralDeControle{
         controle.apertarPlay(tvDaSala);
         controle.apertarPlay(meuCelular);
         controle.apertarPlay(radioDoCarro);
+        controle.apertarPlay(VideoGame);
 
         System.out.println("\n--- Demonstração com uma Lista de Dispostivos ---");
 
         // Criando uma lista que pode guardar QUALQUER DispositivoDeMidia.
-        DispositivoDeMidia[] meusDispositivos = {tvDaSala, meuCelular, radioDoCarro};
+        DispositivoDeMidia[] meusDispositivos = {tvDaSala, meuCelular, radioDoCarro, VideoGame};
 
         //Usando o for-each para apertar o play em todos os dispositivos
 
