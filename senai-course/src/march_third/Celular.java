@@ -9,7 +9,7 @@ public class Celular extends DispositivoDeMidia{
 
         super(nome);
         this.musicaAtual = musica;
-        this.artista = artista
+        this.artista = artista;
     }
 
 

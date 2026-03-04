@@ -188,8 +188,4 @@ public class CaixaEletronico {
     }
 }
 
-//Downcasting (Manual/Explícito): Converter uma superclasse para uma subclasse. É necessário quando você tem uma referência da superclasse mas precisa acessar métodos específicos da subclasse.
-//java
-Animal a = new Cachorro();
-Cachorro c = (Cachorro) a; // Explícito: Necessário para forçar o tipo
 
