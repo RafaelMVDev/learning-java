@@ -11,8 +11,10 @@ public class CalculadoraInterativa {
             System.out.println("\n--- CALCULADORA DE ÁREAS ---");
             System.out.println("1- Criar um Retângulo");
             System.out.println("2- Criar um Círculo");
-            System.out.println("3- Sair");
-            System.out.println("Escolha uma opção: ");
+            System.out.println("3- Criar um Quadrado");
+            System.out.println("4- Criar um Triângulo");
+            System.out.println("5- Sair");
+            System.out.print("Escolha uma opção: ");
 
             // A variável 'figuraDoUsuario' é do tipo da superclasse 'Figura'.
             // Ela pode "assumir a forma" de qualquer classe filha
@@ -25,7 +27,7 @@ public class CalculadoraInterativa {
                 switch (opcao) {
                     case 1:
                         System.out.println("Digite a base do retângulo: ");
-                        double base = scanner.NextDouble();
+                        double base = scanner.nextDouble();
                         System.out.println("Digite a altura do retângulo: ");
                         double altura = scanner.nextDouble();
 
@@ -41,6 +43,20 @@ public class CalculadoraInterativa {
                         figuraDoUsuario = new Circulo(raio);
                         break;
                     case 3:
+                        System.out.print("Digite a altura do quadrado: ");
+                        double lado = scanner.nextDouble();
+                        // A variavél  'figuraDoUsuario' AGORA TEM A FORMA  de um Quadrado
+                        figuraDoUsuario = new Quadrado(lado);
+                        break;
+                    case 4:
+                        System.out.print("Digite a altura do triângulo: ");
+                        double altura_tri = scanner.nextDouble();
+                        System.out.print("Agora a medida da base: ");
+                        double base_tri = scanner.nextDouble();
+                        // A variavél  'figuraDoUsuario' AGORA TEM A FORMA  de um Quadrado
+                        figuraDoUsuario = new Triangulo(base_tri,altura_tri);
+                        break;
+                    case 5:
                         System.out.println("Até logo!");
                         continue; // Pula para a próxima iteração do while, que vai parar.
                     default:
