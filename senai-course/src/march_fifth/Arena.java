@@ -12,14 +12,16 @@ public class Arena {
 
         // O alvo dos ataques será um monstro genérico
 
-        Personagem monstro = new Personagem("Dragão",200,0){
+        Personagem monstro = new Personagem("Dragão",200,0) {
             // Isso é uma classe anônimo, um truque para não precisar criar outro arquivo.
             //Ela implementa o metodo abstrato na hora.
 
             @Override
-            public void usarHabilidade(Personagem alvo){
+            public void usarHabilidade(Personagem alvo) {
                 System.out.println("Dragão não tem habilidades especiais.");
-            };
+            }
+
+            ;
         };
             System.out.println("======= A BATALHA VAI COMEÇAR! =======\n");
 
@@ -37,4 +39,4 @@ public class Arena {
             System.out.println("\n =========== FIM DA BATALHA! =======");
         }
     }
-}
+
