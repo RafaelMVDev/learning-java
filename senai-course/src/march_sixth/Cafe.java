@@ -1,4 +1,10 @@
 package march_sixth;
 
-public class Cafe {
+public class Cafe extends Bebida {
+    @Override
+    public void preparar(){
+        System.out.println("Moendo os grãos de café...");
+        System.out.println("Passando  água quente...");
+        System.out.println("Café pronto!");
+    }
 }

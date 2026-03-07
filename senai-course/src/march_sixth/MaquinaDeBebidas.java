@@ -1,5 +1,5 @@
 package march_sixth;
-import java.util.Scanner
+import java.util.Scanner;
 public class MaquinaDeBebidas {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
