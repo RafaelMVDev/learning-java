@@ -49,7 +49,7 @@ public class LojaOnline {
             }
 
             System.out.println("\n--- Resultado Final ---");
-            System.out.println("Status do Pedido "+ meu Pedido.getId() + ": " + meuPedido.getStatus());
+            System.out.println("Status do Pedido "+ meuPedido.getId() + ": " + meuPedido.getStatus());
 
             if(meuPedido.getStatus() == StatusPagamento.APROVADO){
                 System.out.println("Obrigado pela sua compra! Seu produto será enviado.");
