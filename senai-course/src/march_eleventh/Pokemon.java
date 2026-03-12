@@ -1,6 +1,6 @@
 package march_eleventh;
 
-public class Pokemon {
+public abstract class Pokemon {
     private String nome;
     private String tipo;
     private int vida;
@@ -11,7 +11,7 @@ public class Pokemon {
         this.tipo = tipo;
         this.vida = vida;
         this.ataqueBase = ataqueBase;
-    }
+    };
 
     public abstract void listarAtaques();
     public abstract int atacar(Pokemon alvo, int poderEscolhido);

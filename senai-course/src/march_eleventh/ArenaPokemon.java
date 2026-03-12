@@ -9,7 +9,7 @@ public class ArenaPokemon {
 
         // Lista de Pokémon
 
-        Pokemon[] pokemonDisponiveis = {
+        Pokemon[] pokemonsDisponiveis = {
                 new Charmander(),
                 new Squirtle(),
                 new Bulbasaur(),
@@ -20,17 +20,17 @@ public class ArenaPokemon {
         System.out.println("Escolha seu Pokémon: ");
 
         for (int i = 0 ; i < pokemonsDisponiveis.length; i++){
-            System.out.println((i+ 1) + " - " + pokemonDisponiveis[i].getNome())
+            System.out.println((i+ 1) + " - " + pokemonsDisponiveis[i].getNome());
         }
         int escolha = scanner.nextInt() - 1;
         Pokemon jogador = pokemonsDisponiveis[escolha];
 
-        Pokemon inimigo = pokemonDisponiveis[random.nextInt(pokemonDisponiveis.length)];
+        Pokemon inimigo = pokemonsDisponiveis[random.nextInt(pokemonsDisponiveis.length)];
 
         // Garante que  o inimigo não seja o mesmo que o jogador
 
         while(inimigo.getNome().equals(jogador.getNome())){
-            inimigo = pokemonDisponiveis[random.nextInt(pokemonDisponiveis.length)];
+            inimigo = pokemonsDisponiveis[random.nextInt(pokemonsDisponiveis.length)];
         }
 
         System.out.println("\n Você escolheu" + jogador.getNome() + "!");
