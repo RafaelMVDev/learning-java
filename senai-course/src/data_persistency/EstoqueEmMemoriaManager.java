@@ -18,7 +18,27 @@ public class EstoqueEmMemoriaManager {
      */
 
     public void salvar(Produto produto){
-        System.out.println("-> Salvando '" + produt.getNome() + "' na memória...");
+        System.out.println("-> Salvando '" + produto.getNome() + "' na memória...");
         this.estoqueInterno.add(produto);
     }
+
+    /**
+     * Retorna uma cópia de toda a lista de produtos em memória.
+     * @return A lista de todos os produtos
+     */
+
+    public List<Produto> ListarTodos(){
+        return new ArrayList<>(this.estoqueInterno); // Retorna uma cópia para proteger a lista original
+    }
+
+    /**
+     * Retorna uma cópia de toda a lista de produtos em memória.
+     * @param codigo O código a ser buscado.
+     * @return Um Optional contendo o produto se encontrado, ou vazio caso contrário.
+     */
+
+    public Optional<Produto> buscarPorCodigo(int codigo){
+        return this.estoqueInterno.stream().filter(p -> p.getCodigo() == codigo).findFirst();
+    }
+
 }
