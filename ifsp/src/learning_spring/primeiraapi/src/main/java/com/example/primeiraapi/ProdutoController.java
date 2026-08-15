@@ -1,4 +1,4 @@
-package com.example.primeiraapi;
+package br.edu.ifsp.aula.AulaApplication
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
