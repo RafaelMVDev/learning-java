@@ -23,10 +23,16 @@ public class AlunoController {
     }
 
 
-    @GetMapping("/buscarPorProntuario")
-    public List<Aluno> buscarPorProntuario(String prontuario) {
-        List<Aluno> aluno = repository.findByProntuarioContainingIgnoreCase(prontuario);
-        return aluno;
+    @GetMapping("/buscarPorProntuario/{prontuario}")
+    public String buscarPorProntuario(Model model, @PathVariable(name="prontuario") String prontuario) {
+        Aluno aluno = repository.findFirstByProntuarioIgnoreCase(prontuario);
+
+        if (aluno != null){
+            model.addAttribute("aluno",aluno);
+            return "info_aluno";
+        }
+        model.addAttribute("mensagem", "ID inválido :(");
+        return "erro";
     }
     @PostMapping("/adicionar")
     public String adicionar(@ModelAttribute Aluno aluno) {
@@ -38,17 +44,31 @@ public class AlunoController {
     public String editarPagina(Model model, @PathVariable(name = "id") Long id) {
         Optional<Aluno> aluno = repository.findById(id);
         if (aluno.isPresent()){
-            model.addAttribute("aluno",aluno);
+            System.out.println("ACHOU ALUNO YAYYY");
+            System.out.println(aluno);
+            model.addAttribute("aluno",aluno.get());
+        }
+        else {
+            System.out.println("Não tem aluno");
+            model.addAttribute("mensagem", "ID inválido :(");
+            return "erro";
         }
 
         return "editar";
     }
 
     @PostMapping("/editar/{id}")
-    public String editar(@ModelAttribute Aluno aluno, String id) {
+    public String editar(@ModelAttribute Aluno aluno, @PathVariable(name = "id") Long id) {
         //repository.
-        System.out.println(aluno);
-        return "editar";
+        Aluno existente = repository.findById(id)
+                .orElseThrow();
+        existente.setNome(aluno.getNome());
+        existente.setProntuario(aluno.getProntuario());
+        existente.setCurso(aluno.getCurso());
+
+        repository.save(existente);
+
+        return "redirect:/";
     }
 
     @GetMapping("/deletar/{id}")
