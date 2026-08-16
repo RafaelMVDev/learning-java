@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 public class AlunoController {
 
@@ -33,8 +35,12 @@ public class AlunoController {
     }
 
     @GetMapping("/editar/{id}")
-    public String editarPagina(@ModelAttribute Aluno aluno, String id) {
-        //repository.
+    public String editarPagina(Model model, @PathVariable(name = "id") Long id) {
+        Optional<Aluno> aluno = repository.findById(id);
+        if (aluno.isPresent()){
+            model.addAttribute("aluno",aluno);
+        }
+
         return "editar";
     }
 
